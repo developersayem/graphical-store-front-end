@@ -1,6 +1,8 @@
 import React from 'react';
 import Feature from './Feature/Feature';
 import Hero from './Hero/Hero';
+import HomeServices from './HomeServices/HomeService';
+
 
 const Home = () => {
     return (
@@ -10,6 +12,9 @@ const Home = () => {
             </div>
             <div className='flex justify-center'>
                 <Feature></Feature>
+            </div>
+            <div className='flex justify-center'>
+                <HomeServices></HomeServices>
             </div>
         </div>
     );
