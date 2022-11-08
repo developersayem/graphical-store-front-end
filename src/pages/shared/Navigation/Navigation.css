@@ -1,0 +1,6 @@
+.text_fill {
+  background-image: url("https://laughingsquid.com/wp-content/uploads/2015/04/tumblr_nkx0nzAZSZ1tcuj64o1_400.gif");
+  background-size: cover;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}

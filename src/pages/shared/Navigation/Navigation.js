@@ -1,3 +1,5 @@
+
+import "./Navigation.css"
 import React from 'react';
 import { Link } from "react-router-dom";
 
@@ -33,7 +35,7 @@ const Navigation = () => {
                 className="p-1 font-normal"
             >
                 <span>
-                    <Link to="/myreviews" className="flex items-center">
+                    <Link to="/myreviews" className="flex hover:text-blue-400 items-center">
                         My Reviews
                     </Link>
                 </span>
@@ -47,7 +49,7 @@ const Navigation = () => {
                 className="p-1 font-normal"
             >
                 <span>
-                    <Link to="/addservice" className="flex items-center">
+                    <Link to="/addservice" className="flex items-center hover:text-blue-400">
                         Add Services
                     </Link>
                 </span>
@@ -66,7 +68,7 @@ const Navigation = () => {
                 className="p-1 font-normal"
             >
                 <span>
-                    <Link to="/home" className="flex items-center">
+                    <Link to="/home" className="flex  hover:text-blue-400 items-center">
                         Home
                     </Link>
                 </span>
@@ -80,7 +82,7 @@ const Navigation = () => {
                 className="p-1 font-normal"
             >
                 <span>
-                    <Link to="/services" className="flex items-center">
+                    <Link to="/services" className="flex hover:text-blue-400 items-center">
                         Services
                     </Link>
                 </span>
@@ -95,7 +97,7 @@ const Navigation = () => {
                 className="p-1 font-normal"
             >
                 <span>
-                    <Link to="/blogs" className="flex items-center">
+                    <Link to="/blogs" className="flex hover:text-blue-400 items-center">
                         blogs
                     </Link>
                 </span>
@@ -113,11 +115,11 @@ const Navigation = () => {
                     as="div"
                     href="#"
                     variant="h5"
-                    color="blue"
+                    color="transparent"
                     className="mr-4 cursor-pointer py-1.5 font-normal"
                 >
-
-                    <Link to="/" className='!underline-offset-0'>Graphical Store</Link>
+                    <Link to="/" className='text_fill'
+                    >Graphical Store</Link>
                 </Typography>
                 <div className="hidden lg:block">
                     {navList}
@@ -182,7 +184,7 @@ const Navigation = () => {
                     </Button>
                 </div>
             </MobileNav>
-        </Navbar>
+        </Navbar >
     );
 };
 
