@@ -1,4 +1,6 @@
 import React from 'react';
+import Footer from '../shared/Footer/Footer';
+import ContactUs from './ContactUs/ContactUs';
 import Feature from './Feature/Feature';
 import Hero from './Hero/Hero';
 import HomeServices from './HomeServices/HomeService';
@@ -16,6 +18,10 @@ const Home = () => {
             <div className='flex justify-center'>
                 <HomeServices></HomeServices>
             </div>
+            <div className='flex justify-center'>
+                <ContactUs></ContactUs>
+            </div>
+            <Footer></Footer>
         </div>
     );
 };
