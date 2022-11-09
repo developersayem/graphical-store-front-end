@@ -35,7 +35,7 @@ const Navigation = () => {
                 className="p-1 font-normal"
             >
                 <span>
-                    <Link to="/myreviews" className="flex hover:text-blue-400 items-center">
+                    <Link to="/myreviews" className="flex hover:text-blue-400 hover:scale-150 items-center">
                         My Reviews
                     </Link>
                 </span>
@@ -49,7 +49,7 @@ const Navigation = () => {
                 className="p-1 font-normal"
             >
                 <span>
-                    <Link to="/addservice" className="flex items-center hover:text-blue-400">
+                    <Link to="/addservice" className="flex items-center hover:scale-150 hover:text-blue-400">
                         Add Services
                     </Link>
                 </span>
@@ -68,7 +68,7 @@ const Navigation = () => {
                 className="p-1 font-normal"
             >
                 <span>
-                    <Link to="/home" className="flex  hover:text-blue-400 items-center">
+                    <Link to="/home" className="flex  hover:text-blue-400 hover:scale-150 items-center">
                         Home
                     </Link>
                 </span>
@@ -82,7 +82,7 @@ const Navigation = () => {
                 className="p-1 font-normal"
             >
                 <span>
-                    <Link to="/services" className="flex hover:text-blue-400 items-center">
+                    <Link to="/services" className="flex hover:text-blue-400 hover:scale-150 items-center">
                         Services
                     </Link>
                 </span>
@@ -97,7 +97,7 @@ const Navigation = () => {
                 className="p-1 font-normal"
             >
                 <span>
-                    <Link to="/blogs" className="flex hover:text-blue-400 items-center">
+                    <Link to="/blogs" className="flex hover:text-blue-400 hover:scale-150 items-center">
                         blogs
                     </Link>
                 </span>
@@ -116,19 +116,19 @@ const Navigation = () => {
                     href="#"
                     variant="h5"
                     color="transparent"
-                    className="mr-4 cursor-pointer py-1.5 font-normal"
+                    className="mr-4 cursor-pointer py-1.5 font-normal hover:scale-110"
                 >
-                    <Link to="/" className='text_fill'
+                    <Link to="/" className='text_fill '
                     >Graphical Store</Link>
                 </Typography>
                 <div className="hidden lg:block">
                     {navList}
                 </div>
                 <div>
-                    <Button ripple={true} variant="gradient" size="sm" className="hidden lg:inline-block mr-5">
+                    <Button ripple={true} variant="gradient" size="sm" className="hidden hover:scale-110 lg:inline-block mr-5">
                         <Link to="/login">Log IN</Link>
                     </Button>
-                    <Button ripple={true} variant="gradient" size="sm" className="hidden lg:inline-block">
+                    <Button ripple={true} variant="gradient" size="sm" className="hidden hover:scale-110 lg:inline-block">
                         <Link to="/register">Register</Link>
                     </Button>
                 </div>

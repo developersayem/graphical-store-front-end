@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import HomeCard from './HomeCard/HomeCard';
+import { Button } from "@material-tailwind/react";
+
 
 const HomeServices = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch("https://service-review-server-server.vercel.app/services")
+        fetch("https://service-review-server-server.vercel.app/homeservices")
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
@@ -21,6 +23,9 @@ const HomeServices = () => {
                 {
                     services.map(service => <HomeCard key={service._id} service={service}></HomeCard>)
                 }
+            </div>
+            <div className='mt-10'>
+                <Button>See All</Button>
             </div>
         </div>
     );
