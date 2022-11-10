@@ -3,7 +3,7 @@ import { FaAngleDoubleDown } from "react-icons/fa";
 
 const Hero = () => {
     return (
-        <div className="container ">
+        <div className="container">
             <div className="hero bg-bottom rounded-xl min-content bg-red-500"
                 style={{ backgroundImage: `url("https://i.pinimg.com/originals/2e/a7/f5/2ea7f5d29b0fe88cc8e1c93bb50d3c40.gif")`, }}
             >

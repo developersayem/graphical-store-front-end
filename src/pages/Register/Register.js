@@ -21,7 +21,7 @@ const Register = () => {
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false)
 
-    const { creteUser, updateUser } = useContext(AuthContext)
+    const { creteUser, updateUser, googleLogin } = useContext(AuthContext)
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -76,6 +76,12 @@ const Register = () => {
                             </div>
                             <Button className='mt-5 hover:scale-110' variant="gradient" type='submit' fullWidth>
                                 Sign In
+                            </Button>
+                            <div>
+                                <p className='mt-2'>OR</p>
+                            </div>
+                            <Button onClick={googleLogin} className='mt-2 relative hover:scale-110' variant="gradient" type='submit' fullWidth>
+                                Google
                             </Button>
                         </form>
                         {/* <div className="-ml-2.5">

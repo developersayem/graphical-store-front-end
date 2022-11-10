@@ -10,7 +10,7 @@ import {
     MobileNav,
     Typography,
     Button,
-    IconButton,
+    IconButton, Tooltip
 } from "@material-tailwind/react";
 import { AuthContext } from "../../../Contexts/UserContext";
 
@@ -137,7 +137,13 @@ const Navigation = () => {
 
                     {user?.email ? (
                         <div>
-                            <Avatar src={user?.photoURL} alt="avatar" className=" mr-5 hover:scale-125" variant="circular" />
+                            <Tooltip content={user?.displayName}>
+                                <Button onClick={LogOut} ripple={true} variant="text" size="sm" className="hidden hover:scale-110 lg:inline-block">
+                                    <Avatar src={user?.photoURL} alt="avatar" className=" mr-5 hover:scale-125 lg:inline-block" variant="circular" />
+                                </Button>
+
+                            </Tooltip>
+
                             <Button onClick={LogOut} ripple={true} variant="gradient" size="sm" className="hidden hover:scale-110 lg:inline-block">
                                 <Link>Log Out</Link>
                             </Button>
@@ -186,14 +192,21 @@ const Navigation = () => {
 
             </div>
             <MobileNav open={openNav}>
-                {navList}
+                <div className="ml-10">
+                    {navList}
+                </div>
                 <div>
-                    <Button variant="gradient" size="sm" fullWidth className="mb-2">
-                        <Link to="/login">Log In</Link>
-                    </Button>
-                    <Button variant="gradient" size="sm" fullWidth className="mb-2">
-                        <Link to="/register">Register</Link>
-                    </Button>
+                    {user?.email ? (
+                        <div>
+                            <Tooltip content={user?.displayName}>
+                                <Avatar src={user?.photoURL} alt="avatar" className=" mr-5 hover:scale-125" variant="circular" />
+                            </Tooltip>
+
+                            <Button onClick={LogOut} ripple={true} variant="gradient" size="sm" className="hidden hover:scale-110 lg:inline-block">
+                                <Link>Log Out</Link>
+                            </Button>
+                        </div>
+                    ) : (<></>)}
                 </div>
             </MobileNav>
         </Navbar >

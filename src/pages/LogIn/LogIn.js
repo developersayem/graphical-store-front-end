@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+
 import {
     Card,
     Input,
@@ -8,17 +9,22 @@ import {
     CardBody,
     CardFooter,
     Typography,
+    IconButton
 } from "@material-tailwind/react";
 import { AuthContext } from '../../Contexts/UserContext';
 import useTitle from '../../Hooks/useTitle';
+import { FaGoogle } from "react-icons/fa";
 
 const LogIn = () => {
 
     useTitle("Log In")
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false)
+    const Navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
-    const { LogInUser } = useContext(AuthContext)
+    const { LogInUser, googleLogin } = useContext(AuthContext)
 
 
 
@@ -32,6 +38,8 @@ const LogIn = () => {
             .then(res => {
                 setError(false)
                 setSuccess(true)
+                form.reset();
+                Navigate(from, { replace: true });
             })
             .cacth(err => {
                 setError(true)
@@ -39,24 +47,6 @@ const LogIn = () => {
             })
 
     }
-
-
-    const errorfull = () => {
-        setError(true)
-        setSuccess(false)
-    }
-    const successFull = () => {
-        setSuccess(true);
-        setError(false)
-    }
-    const nothing = () => {
-        setSuccess(false);
-        setError(false)
-    }
-
-
-
-
 
     return (
         <div className='flex justify-center content-center mt-16'>
@@ -80,6 +70,12 @@ const LogIn = () => {
                         </div>
                         <Button className='mt-5 hover:scale-110' variant="gradient" type='submit' fullWidth>
                             Log In
+                        </Button>
+                        <div>
+                            <p className='mt-2'>OR</p>
+                        </div>
+                        <Button onClick={googleLogin} className='mt-2 relative hover:scale-110' variant="gradient" type='submit' fullWidth>
+                            Google
                         </Button>
                     </form>
                     {/* <div className="-ml-2.5">
