@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
     Card,
@@ -44,9 +46,12 @@ const LogIn = () => {
             .cacth(err => {
                 setError(true)
                 setSuccess(false)
+                notify();
             })
 
     }
+    const notify = () => toast("You are Loged In!");
+
 
     return (
         <div className='flex justify-center content-center mt-16'>
@@ -92,7 +97,7 @@ const LogIn = () => {
                             color="blue"
                             className="ml-1 font-bold"
                         >
-                            <Link to="/register">Register</Link>
+                            <Link to="/register">Register <ToastContainer /></Link>
                         </Typography>
                     </Typography>
                 </CardFooter>

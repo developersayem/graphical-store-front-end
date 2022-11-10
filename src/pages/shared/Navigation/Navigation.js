@@ -138,10 +138,7 @@ const Navigation = () => {
                     {user?.email ? (
                         <div>
                             <Tooltip content={user?.displayName}>
-                                <Button onClick={LogOut} ripple={true} variant="text" size="sm" className="hidden hover:scale-110 lg:inline-block">
-                                    <Avatar src={user?.photoURL} alt="avatar" className=" mr-5 hover:scale-125 lg:inline-block" variant="circular" />
-                                </Button>
-
+                                <Avatar src={user?.photoURL} alt="avatar" className=" mr-5 hover:scale-125 lg:inline-block" variant="circular" />
                             </Tooltip>
 
                             <Button onClick={LogOut} ripple={true} variant="gradient" size="sm" className="hidden hover:scale-110 lg:inline-block">

@@ -7,6 +7,7 @@ import ErrorPage from '../../pages/ErrorPage/ErrorPage';
 import Home from '../../pages/Home/Home';
 import LogIn from '../../pages/LogIn/LogIn';
 import MyReviews from '../../pages/MyReviews/MyReviews';
+import EditReview from '../../pages/MyReviews/UserReview/EditReview/EditReview';
 import Register from '../../pages/Register/Register';
 import Services from '../../pages/Services/Services';
 import ServicesDetails from '../../pages/Services/ServicesDetails/ServicesDetails';
@@ -51,6 +52,14 @@ export const router = createBrowserRouter([
             {
                 path: "/addservice",
                 element: <PrivetRoute><AddService></AddService></PrivetRoute>,
+            },
+            {
+                path: "/review/edit/:id",
+                element: <EditReview></EditReview>,
+                loader: async ({ params }) =>
+                    fetch(
+                        `https://service-review-server-server.vercel.app/review/${params.id}`
+                    ),
             },
             {
                 path: "/services/:id",

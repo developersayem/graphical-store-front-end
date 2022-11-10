@@ -2,6 +2,8 @@ import { Button, IconButton } from '@material-tailwind/react';
 import React, { useContext, useState } from 'react';
 import { FaStar } from "react-icons/fa";
 import { AuthContext } from '../../../../Contexts/UserContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddReview = ({ setRdata, service }) => {
     const [stars, setStars] = useState(0)
@@ -13,6 +15,8 @@ const AddReview = ({ setRdata, service }) => {
 
     console.log(service._id)
     const { user } = useContext(AuthContext);
+
+    const notify = () => toast("Thanks for your opinion!");
 
     const addReview = () => {
         const ratings = stars;
@@ -36,8 +40,8 @@ const AddReview = ({ setRdata, service }) => {
             .then((data) => {
                 if (data.acknowledged
                     > 0) {
-                    alert("reviews add successfully");
                     setRdata(true)
+                    notify();
                 }
             });
 
@@ -46,7 +50,7 @@ const AddReview = ({ setRdata, service }) => {
 
     return (
         <div>
-            <div className="flex flex-col mt-16 p-8 shadow-sm rounded-xl lg:p-12 bg-gray-900 text-gray-100">
+            <div className="flex flex-col mt-16 p-8 shadow-sm rounded-xl lg:p-12  text-gray-100 bg-gray-900">
                 <div className="flex flex-col items-center w-full">
                     <h2 className="text-3xl font-semibold text-center">Your opinion matters!</h2>
                     <div className="flex flex-col items-center py-6 space-y-3">
@@ -75,13 +79,13 @@ const AddReview = ({ setRdata, service }) => {
                         </div>
                     </div>
                     <div className="flex flex-col w-full">
-                        <textarea rows="3" onBlur={(event) => setText(event.target.value)} placeholder="Message..." className="p-4 rounded-md resize-none text-gray-100 bg-gray-900"></textarea>
-                        <Button onClick={addReview} type="button" className="py-4 my-8 font-semibold rounded-md dark:text-gray-900 dark:bg-violet-400">Give feedback</Button>
+                        <textarea rows="3" onBlur={(event) => setText(event.target.value)} placeholder="Message..." className="p-4 border rounded-md resize-none text-gray-100 bg-gray-900"></textarea>
+                        <Button onClick={addReview} type="button" className="py-4 my-8 font-semibold rounded-md">Give feedback<ToastContainer /></Button>
                     </div>
                 </div>
 
             </div>
-        </div>
+        </div >
     );
 };
 

@@ -1,6 +1,9 @@
 import React from 'react';
 import { Input, Textarea, Button } from "@material-tailwind/react";
 import useTitle from '../../Hooks/useTitle';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const AddService = () => {
 
@@ -27,12 +30,12 @@ const AddService = () => {
             .then((data) => {
                 if (data.acknowledged
                     > 0) {
-                    alert("reviews add successfully");
+                    notify()
                 }
             });
 
     }
-
+    const notify = () => toast("Seviews add successfully!");
 
     return (
         <div className='container mx-20'>
@@ -54,7 +57,7 @@ const AddService = () => {
                         <div className='my-3'>
                             <Textarea name='dtetails' variant="outlined" label="Details" />
                         </div>
-                        <Button type='submit'>Submit</Button>
+                        <Button type='submit'>Submit <ToastContainer /></Button>
                     </form>
                 </div>
             </div>

@@ -23,7 +23,9 @@ const Home = () => {
             <div className='flex justify-center'>
                 <ContactUs></ContactUs>
             </div>
-            <Footer></Footer>
+            <div>
+                <Footer></Footer>
+            </div>
         </div>
     );
 };

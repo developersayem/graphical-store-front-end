@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
     Card,
@@ -43,9 +45,11 @@ const Register = () => {
                 console.error(err);
                 setError(true);
                 setSuccess(false)
+                notify();
             });
 
     }
+    const notify = () => toast("Thanks for Registration!");
 
     return (
         <div>
@@ -75,7 +79,7 @@ const Register = () => {
                                 <Input type="text" name='photoUrl' label="PhotoURL" size="lg" required />
                             </div>
                             <Button className='mt-5 hover:scale-110' variant="gradient" type='submit' fullWidth>
-                                Sign In
+                                Register  <ToastContainer />
                             </Button>
                             <div>
                                 <p className='mt-2'>OR</p>
