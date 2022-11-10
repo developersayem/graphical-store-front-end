@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { FaStar } from "react-icons/fa";
 import { AuthContext } from '../../../../Contexts/UserContext';
 
-const AddReview = ({ setRdata }) => {
+const AddReview = ({ setRdata, service }) => {
     const [stars, setStars] = useState(0)
 
     const [text, setText] = useState("")
@@ -11,10 +11,12 @@ const AddReview = ({ setRdata }) => {
         setStars(num);
     }
 
+    console.log(service._id)
     const { user } = useContext(AuthContext);
 
     const addReview = () => {
         const ratings = stars;
+        const servicesId = service._id;
         const img = user?.photoURL;
         const email = user?.email;
         const name = user?.displayName;
@@ -22,7 +24,7 @@ const AddReview = ({ setRdata }) => {
         const time = new Date(timestamp);
         const description = text;
         console.log(description)
-        const data = { name, email, img, ratings, description, time }
+        const data = { servicesId, name, email, img, ratings, description, time }
         fetch("https://service-review-server-server.vercel.app/reviews", {
             method: "POST",
             headers: {

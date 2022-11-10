@@ -30,7 +30,7 @@ const ServicesDetails = () => {
             </div>
             <div className=''>
                 {
-                    user?.email ? (<AddReview setRdata={setRdata}></AddReview>) : (<></>)
+                    user?.email ? (<AddReview setRdata={setRdata} service={service}></AddReview>) : (<></>)
                 }
                 {
                     !user?.email ? (

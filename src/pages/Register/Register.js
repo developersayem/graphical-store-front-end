@@ -11,10 +11,13 @@ import {
     Typography,
 } from "@material-tailwind/react";
 import { AuthContext } from '../../Contexts/UserContext';
+import useTitle from '../../Hooks/useTitle';
 
 
 
 const Register = () => {
+
+    useTitle("Register");
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false)
 

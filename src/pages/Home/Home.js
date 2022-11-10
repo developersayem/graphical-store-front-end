@@ -1,4 +1,5 @@
 import React from 'react';
+import useTitle from '../../Hooks/useTitle';
 import Footer from '../shared/Footer/Footer';
 import ContactUs from './ContactUs/ContactUs';
 import Feature from './Feature/Feature';
@@ -7,6 +8,7 @@ import HomeServices from './HomeServices/HomeService';
 
 
 const Home = () => {
+    useTitle("Graphical")
     return (
         <div className='mx-16 mt-10'>
             <div className='flex justify-center'>

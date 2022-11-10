@@ -6,8 +6,11 @@ import {
     AccordionBody,
     Typography
 } from "@material-tailwind/react";
+import useTitle from '../../Hooks/useTitle';
 
 const Blogs = () => {
+
+    useTitle("Blogs")
     const [open, setOpen] = useState(1);
 
     const handleOpen = (value) => {
