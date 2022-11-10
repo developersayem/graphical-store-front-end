@@ -16,6 +16,7 @@ import {
 import { AuthContext } from '../../Contexts/UserContext';
 import useTitle from '../../Hooks/useTitle';
 import { FaGoogle } from "react-icons/fa";
+import userEvent from '@testing-library/user-event';
 
 const LogIn = () => {
 
@@ -41,6 +42,27 @@ const LogIn = () => {
                 setError(false)
                 setSuccess(true)
                 form.reset();
+                const user = res.user
+                const currentUser = {
+                    email: user.email
+                }
+                // jwt token
+                fetch("https://service-review-server-server.vercel.app/jwt", {
+                    method: "POST",
+                    headers: {
+                        "content- type": "application/json"
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+
+                        //set jwt to local storage 
+                        localStorage.setItem("token", data.token)
+                    })
+
+
                 Navigate(from, { replace: true });
             })
             .cacth(err => {
