@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 
@@ -43,8 +42,8 @@ const HomeCard = ({ service }) => {
                 <div className='mt-1 pt-1'>
 
                 </div>
-                <Typography as="div" variant="small" color="gray" className="flex gap-1">
-                    <div>
+                <Typography as="div" variant="small" color="gray" className="flex gap-1 ">
+                    <div className='text-amber-400'>
                         <FaStarHalfAlt />
                     </div>
                     {ratings}

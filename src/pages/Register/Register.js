@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
 
 import {
@@ -10,7 +10,15 @@ import {
     CardFooter,
     Typography,
 } from "@material-tailwind/react";
+import { AuthContext } from '../../Contexts/UserContext';
+
+
+
 const Register = () => {
+    const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(false)
+
+    const { creteUser, updateUser } = useContext(AuthContext)
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -18,8 +26,21 @@ const Register = () => {
         const fullName = form.fullName.value;
         const email = form.email.value;
         const password = form.password.value;
-        const PhotoURL = form.photoUrl.value;
-        console.log(fullName, email, password, PhotoURL);
+        const photoURL = form.photoUrl.value;
+        creteUser(email, password)
+            .then((result) => {
+                form.reset();
+                setSuccess(true);
+                setError(false);
+                updateUser(fullName, photoURL)
+                    .then((result) => console.log("done"))
+                    .cacth((err) => console.error(err));
+            })
+            .cacth((err) => {
+                console.error(err);
+                setError(true);
+                setSuccess(false)
+            });
 
     }
 
@@ -29,11 +50,11 @@ const Register = () => {
                 <Card className="w-96">
                     <CardHeader
                         variant="gradient"
-                        color="blue"
+                        color={success ? "green" : error ? "red" : "blue"}
                         className="mb-4 grid h-28 place-items-center"
                     >
                         <Typography variant="h3" color="white">
-                            Register
+                            {success ? "Success!" : error ? "Error!" : "Register"}
                         </Typography>
                     </CardHeader>
                     <CardBody className="flex flex-col gap-4">
@@ -50,7 +71,7 @@ const Register = () => {
                             <div className='mb-3'>
                                 <Input type="text" name='photoUrl' label="PhotoURL" size="lg" required />
                             </div>
-                            <Button className='mt-5' variant="gradient" type='submit' fullWidth>
+                            <Button className='mt-5 hover:scale-110' variant="gradient" type='submit' fullWidth>
                                 Sign In
                             </Button>
                         </form>

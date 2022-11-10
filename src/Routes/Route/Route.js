@@ -6,7 +6,8 @@ import ErrorPage from '../../pages/ErrorPage/ErrorPage';
 import Home from '../../pages/Home/Home';
 import LogIn from '../../pages/LogIn/LogIn';
 import Register from '../../pages/Register/Register';
-import Services from '../../Services/Services';
+import Services from '../../pages/Services/Services';
+import ServicesDetails from '../../pages/Services/ServicesDetails/ServicesDetails';
 
 
 
@@ -40,6 +41,14 @@ export const router = createBrowserRouter([
                 path: "/services",
                 element: <Services></Services>,
                 loader: () => fetch("https://service-review-server-server.vercel.app/services")
+            },
+            {
+                path: "/services/:id",
+                element: <ServicesDetails></ServicesDetails>,
+                loader: async ({ params }) =>
+                    fetch(
+                        `https://service-review-server-server.vercel.app/services/${params.id}`
+                    ),
             },
         ]
     }, {

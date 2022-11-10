@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
-
 import {
     Card,
     Input,
@@ -10,28 +9,62 @@ import {
     CardFooter,
     Typography,
 } from "@material-tailwind/react";
+import { AuthContext } from '../../Contexts/UserContext';
 
 const LogIn = () => {
+    const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(false)
+
+    const { LogInUser } = useContext(AuthContext)
+
+
+
+
     const handleLogin = (event) => {
         event.preventDefault();
         const form = event.target;
-        const fullName = form.fullName.value;
         const email = form.email.value;
         const password = form.password.value;
-        const PhotoURL = form.photoUrl.value;
-        console.log(fullName, email, password, PhotoURL);
+        LogInUser(email, password)
+            .then(res => {
+                setError(false)
+                setSuccess(true)
+            })
+            .cacth(err => {
+                setError(true)
+                setSuccess(false)
+            })
 
     }
+
+
+    const errorfull = () => {
+        setError(true)
+        setSuccess(false)
+    }
+    const successFull = () => {
+        setSuccess(true);
+        setError(false)
+    }
+    const nothing = () => {
+        setSuccess(false);
+        setError(false)
+    }
+
+
+
+
+
     return (
         <div className='flex justify-center content-center mt-16'>
             <Card className="w-96">
                 <CardHeader
                     variant="gradient"
-                    color="blue"
+                    color={success ? "green" : error ? "red" : "blue"}
                     className="mb-4 grid h-28 place-items-center"
                 >
                     <Typography variant="h3" color="white">
-                        Log In
+                        {success ? "Success!" : error ? "Error!" : "Log In"}
                     </Typography>
                 </CardHeader>
                 <CardBody className="flex flex-col gap-4">
@@ -42,7 +75,7 @@ const LogIn = () => {
                         <div className='mb-3'>
                             <Input type="password" name='password' label="Password" size="lg" required />
                         </div>
-                        <Button className='mt-5' variant="gradient" type='submit' fullWidth>
+                        <Button className='mt-5 hover:scale-110' variant="gradient" type='submit' fullWidth>
                             Log In
                         </Button>
                     </form>

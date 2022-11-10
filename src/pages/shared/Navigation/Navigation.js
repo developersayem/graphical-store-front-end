@@ -1,7 +1,8 @@
 
 import "./Navigation.css"
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
+import { Avatar } from "@material-tailwind/react";
 
 import { useState, useEffect } from "react";
 import {
@@ -11,10 +12,12 @@ import {
     Button,
     IconButton,
 } from "@material-tailwind/react";
+import { AuthContext } from "../../../Contexts/UserContext";
 
 const Navigation = () => {
     const [openNav, setOpenNav] = useState(false);
-    const [show, setShow] = useState(false);
+    const { user, LogOut } = useContext(AuthContext)
+
 
     useEffect(() => {
         window.addEventListener(
@@ -23,39 +26,6 @@ const Navigation = () => {
         );
     }, []);
 
-
-
-    const priveteList = (
-        <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-            {/* ------------------------my reviews --------------------------- */}
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <span>
-                    <Link to="/myreviews" className="flex hover:text-blue-400 hover:scale-150 items-center">
-                        My Reviews
-                    </Link>
-                </span>
-            </Typography>
-            {/* ---------------------- add Services --------------------------- */}
-
-            <Typography
-                as="li"
-                variant="small"
-                color="blue-gray"
-                className="p-1 font-normal"
-            >
-                <span>
-                    <Link to="/addservice" className="flex items-center hover:scale-150 hover:text-blue-400">
-                        Add Services
-                    </Link>
-                </span>
-            </Typography>
-        </ul>
-    );
 
 
     const navList = (
@@ -68,7 +38,7 @@ const Navigation = () => {
                 className="p-1 font-normal"
             >
                 <span>
-                    <Link to="/home" className="flex  hover:text-blue-400 hover:scale-150 items-center">
+                    <Link to="/home" className="flex  hover:text-blue-400 hover:scale-110 items-center">
                         Home
                     </Link>
                 </span>
@@ -82,7 +52,7 @@ const Navigation = () => {
                 className="p-1 font-normal"
             >
                 <span>
-                    <Link to="/services" className="flex hover:text-blue-400 hover:scale-150 items-center">
+                    <Link to="/services" className="flex hover:text-blue-400 hover:scale-110 items-center">
                         Services
                     </Link>
                 </span>
@@ -97,14 +67,42 @@ const Navigation = () => {
                 className="p-1 font-normal"
             >
                 <span>
-                    <Link to="/blogs" className="flex hover:text-blue-400 hover:scale-150 items-center">
+                    <Link to="/blogs" className="flex hover:text-blue-400 hover:scale-110 items-center">
                         blogs
                     </Link>
                 </span>
             </Typography>
-            {
-                show ? { priveteList } : <></>
-            }
+
+            {user?.email ? (
+                <Typography
+                    as="li"
+                    variant="small"
+                    color="blue-gray"
+                    className="p-1 font-normal"
+                >
+                    <span>
+                        <Link to="/myreviews" className="flex hover:text-blue-400 hover:scale-110 items-center">
+                            My Reviews
+                        </Link>
+                    </span>
+                </Typography>
+            ) : (<></>)}
+            {user?.email ? (
+                <Typography
+                    as="li"
+                    variant="small"
+                    color="blue-gray"
+                    className="p-1 font-normal"
+                >
+                    <span>
+                        <Link to="/addservice" className="flex hover:text-blue-400 hover:scale-110 items-center">
+                            Add Service
+                        </Link>
+                    </span>
+                </Typography>
+            ) : (<></>)}
+
+
         </ul>
     );
 
@@ -125,16 +123,32 @@ const Navigation = () => {
                     {navList}
                 </div>
                 <div>
-                    <Button ripple={true} variant="gradient" size="sm" className="hidden hover:scale-110 lg:inline-block mr-5">
-                        <Link to="/login">Log IN</Link>
-                    </Button>
-                    <Button ripple={true} variant="gradient" size="sm" className="hidden hover:scale-110 lg:inline-block">
-                        <Link to="/register">Register</Link>
-                    </Button>
+
+                    {!user?.email ? (
+                        <div>
+                            <Button ripple={true} variant="gradient" size="sm" className="hidden hover:scale-110 lg:inline-block mr-5">
+                                <Link to="/login">Log IN</Link>
+                            </Button>
+                            <Button ripple={true} variant="gradient" size="sm" className="hidden hover:scale-110 lg:inline-block">
+                                <Link to="/register">Register</Link>
+                            </Button>
+                        </div>
+                    ) : (<></>)}
+
+                    {user?.email ? (
+                        <div>
+                            <Avatar src={user?.photoURL} alt="avatar" className=" mr-5 hover:scale-125" variant="circular" />
+                            <Button onClick={LogOut} ripple={true} variant="gradient" size="sm" className="hidden hover:scale-110 lg:inline-block">
+                                <Link>Log Out</Link>
+                            </Button>
+                        </div>
+                    ) : (<></>)}
+
+
                 </div>
                 <IconButton
                     variant="text"
-                    className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+                    className="ml-auto flex h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
                     ripple={false}
                     onClick={() => setOpenNav(!openNav)}
                 >
@@ -169,12 +183,10 @@ const Navigation = () => {
                         </svg>
                     )}
                 </IconButton>
+
             </div>
             <MobileNav open={openNav}>
                 {navList}
-                {
-                    show ? { priveteList } : <></>
-                }
                 <div>
                     <Button variant="gradient" size="sm" fullWidth className="mb-2">
                         <Link to="/login">Log In</Link>
