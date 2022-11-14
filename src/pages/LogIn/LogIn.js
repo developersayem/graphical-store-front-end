@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -11,12 +11,9 @@ import {
     CardBody,
     CardFooter,
     Typography,
-    IconButton
 } from "@material-tailwind/react";
 import { AuthContext } from '../../Contexts/UserContext';
 import useTitle from '../../Hooks/useTitle';
-import { FaGoogle } from "react-icons/fa";
-import userEvent from '@testing-library/user-event';
 
 const LogIn = () => {
 
@@ -30,8 +27,6 @@ const LogIn = () => {
     const { LogInUser, googleLogin } = useContext(AuthContext)
 
 
-
-
     const handleLogin = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -42,33 +37,29 @@ const LogIn = () => {
                 setError(false)
                 setSuccess(true)
                 form.reset();
+                notify();
                 const user = res.user
-                const currentUser = {
-                    email: user.email
-                }
+                console.log(user);
+                console.log(user.email)
+                const currentUser = { email: user.email }
                 // jwt token
                 fetch("https://service-review-server-server.vercel.app/jwt", {
                     method: "POST",
                     headers: {
-                        "content- type": "application/json"
+                        "content-type": "application/json",
                     },
-                    body: JSON.stringify(currentUser)
+                    body: JSON.stringify(currentUser),
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
-
                         //set jwt to local storage 
                         localStorage.setItem("token", data.token)
+                        console.log(data)
                     })
-
-
                 Navigate(from, { replace: true });
-            })
-            .cacth(err => {
+            }).catch(err => {
+                setSuccess(false);
                 setError(true)
-                setSuccess(false)
-                notify();
             })
 
     }
@@ -119,7 +110,7 @@ const LogIn = () => {
                             color="blue"
                             className="ml-1 font-bold"
                         >
-                            <Link to="/register">Register <ToastContainer /></Link>
+                            <span> <Link to="/register">Register <ToastContainer /></Link></span>
                         </Typography>
                     </Typography>
                 </CardFooter>

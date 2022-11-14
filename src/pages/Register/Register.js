@@ -103,9 +103,11 @@ const Register = () => {
                                 color="blue"
                                 className="ml-1 font-bold"
                             >
-                                <Link to="/login">
-                                    Register
-                                </Link>
+                                <span>
+                                    <Link to="/login">
+                                        Register
+                                    </Link>
+                                </span>
                             </Typography>
                         </Typography>
                     </CardFooter>

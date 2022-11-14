@@ -38,9 +38,9 @@ const Navigation = () => {
                 className="p-1 font-normal"
             >
                 <span>
-                    <Link to="/home" className="flex  hover:text-blue-400 hover:scale-110 items-center">
+                    <div to="/home" className="flex  hover:text-blue-400 hover:scale-110 items-center">
                         Home
-                    </Link>
+                    </div>
                 </span>
             </Typography>
             {/* ----------------------Services --------------------------- */}
@@ -52,9 +52,9 @@ const Navigation = () => {
                 className="p-1 font-normal"
             >
                 <span>
-                    <Link to="/services" className="flex hover:text-blue-400 hover:scale-110 items-center">
+                    <div to="/services" className="flex hover:text-blue-400 hover:scale-110 items-center">
                         Services
-                    </Link>
+                    </div>
                 </span>
             </Typography>
 
@@ -66,11 +66,11 @@ const Navigation = () => {
                 color="blue-gray"
                 className="p-1 font-normal"
             >
-                <span>
+                <div>
                     <Link to="/blogs" className="flex hover:text-blue-400 hover:scale-110 items-center">
                         blogs
                     </Link>
-                </span>
+                </div>
             </Typography>
 
             {user?.email ? (
@@ -80,11 +80,11 @@ const Navigation = () => {
                     color="blue-gray"
                     className="p-1 font-normal"
                 >
-                    <span>
+                    <div>
                         <Link to="/myreviews" className="flex hover:text-blue-400 hover:scale-110 items-center">
                             My Reviews
                         </Link>
-                    </span>
+                    </div>
                 </Typography>
             ) : (<></>)}
             {user?.email ? (
@@ -94,11 +94,11 @@ const Navigation = () => {
                     color="blue-gray"
                     className="p-1 font-normal"
                 >
-                    <span>
+                    <div>
                         <Link to="/addservice" className="flex hover:text-blue-400 hover:scale-110 items-center">
                             Add Service
                         </Link>
-                    </span>
+                    </div>
                 </Typography>
             ) : (<></>)}
 
@@ -116,8 +116,10 @@ const Navigation = () => {
                     color="transparent"
                     className="mr-4 cursor-pointer py-1.5 font-normal hover:scale-110"
                 >
-                    <Link to="/" className='text_fill '
-                    >Graphical Store</Link>
+                    <div>
+                        <Link to="/" className='text_fill '
+                        >Graphical Store</Link>
+                    </div>
                 </Typography>
                 <div className="hidden lg:block">
                     {navList}

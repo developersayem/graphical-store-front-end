@@ -14,9 +14,9 @@ const MyReviews = () => {
     const [change, setChange] = useState(0)
 
     useEffect(() => {
-        fetch(`https://service-review-server-server.vercel.app/myreviews/?email=${user?.email}`, {
+        fetch(`https://service-review-server-server.vercel.app/myreviews?email=${user?.email}`, {
             headers: {
-                authorization: `Bearer ${localStorage.getItem("token")}`
+                authorization: `${localStorage.getItem("token")}`
             }
         })
             .then(res => res.json())
