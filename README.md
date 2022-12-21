@@ -1,8 +1,8 @@
 # <div align= "center">Graphical Store</div>
 
-### Client Side Repo : https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-devsayemmolla
+### Client Side Repo : https://github.com/devsayemmolla/service-review-client-side
 
-## Server side repo : https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-devsayemmolla/tree/main
+## Server side repo : https://github.com/devsayemmolla/service-review-server-side
 
 ### Live site : https://graphic-assainment-11.web.app/
 
