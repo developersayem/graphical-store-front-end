@@ -20,7 +20,7 @@ const Services = () => {
 
 
     return (
-        <div>
+        <div className="container mx-auto p-4 my-6 space-y-2 text-center">
             {
                 spiner ? (
                     <div className='flex justify-center mt-52 h-screen	'>
@@ -28,7 +28,7 @@ const Services = () => {
                     </div>
                 ) : (<></>)
             }
-            <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-10 mt-20 px-16'>
+            <div className='container mx-auto p-4 my-6 space-y-2 text-center grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-10 mt-20 px-16'>
                 {
                     serviceData.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
                 }

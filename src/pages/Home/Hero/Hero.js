@@ -9,8 +9,8 @@ const Hero = () => {
             >
                 <div className="hero-content text-center w-full p-32 flex justify-center">
                     <div className="max-w-md">
-                        <h1 className="text-5xl text-gray-600 brightness-90  font-extrabold ">Hello there</h1>
-                        <p className="text-gray-300 font-bold py-6"> I am a professional graphic designer from bangladesh.
+                        <h1 className="text-5xl text-gray-600 brightness-90  font-extrabold stroke-black">Hello there</h1>
+                        <p className="text-black font-bold text-lg py-6"> I am a professional graphic designer from bangladesh.
                             I Provied Graphic solution Likes Logo design, Poster, Book cover, Banner etc.</p>
 
                         <div className='flex justify-center text-3xl text-gray-600'>

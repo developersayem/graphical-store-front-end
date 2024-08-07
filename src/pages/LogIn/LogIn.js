@@ -61,9 +61,8 @@ const LogIn = () => {
                 setSuccess(false);
                 setError(true)
             })
-
     }
-    const notify = () => toast("You are Loged In!");
+    const notify = () => toast("you are successfully logged in!");
 
 
     return (
@@ -89,12 +88,12 @@ const LogIn = () => {
                         <Button className='mt-5 hover:scale-110' variant="gradient" type='submit' fullWidth>
                             Log In
                         </Button>
-                        <div>
+                        {/* <div>
                             <p className='mt-2'>OR</p>
                         </div>
                         <Button onClick={googleLogin} className='mt-2 relative hover:scale-110' variant="gradient" type='submit' fullWidth>
                             Google
-                        </Button>
+                        </Button> */}
                     </form>
                     {/* <div className="-ml-2.5">
                         <Checkbox label="Remember Me" />
@@ -113,6 +112,10 @@ const LogIn = () => {
                             <span> <Link to="/register">Register <ToastContainer /></Link></span>
                         </Typography>
                     </Typography>
+                    <div className="">
+                        <p className="font-bold">Email: test1234</p>
+                        <p className="font-bold">Password: test1234</p>
+                    </div>
                 </CardFooter>
             </Card>
         </div>

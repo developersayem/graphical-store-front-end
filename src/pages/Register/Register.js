@@ -81,12 +81,12 @@ const Register = () => {
                             <Button className='mt-5 hover:scale-110' variant="gradient" type='submit' fullWidth>
                                 Register  <ToastContainer />
                             </Button>
-                            <div>
+                            {/* <div>
                                 <p className='mt-2'>OR</p>
                             </div>
                             <Button onClick={googleLogin} className='mt-2 relative hover:scale-110' variant="gradient" type='submit' fullWidth>
                                 Google
-                            </Button>
+                            </Button> */}
                         </form>
                         {/* <div className="-ml-2.5">
                             <Checkbox label="Remember Me" />

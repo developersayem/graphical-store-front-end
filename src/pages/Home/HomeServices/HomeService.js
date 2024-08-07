@@ -14,17 +14,17 @@ const HomeServices = () => {
 
 
     return (
-        <div>
             <div className="container mx-auto p-4 my-6 space-y-2 text-center">
                 <h2 className="text-5xl font-bold">Services</h2>
-            </div>
             <div className='grid lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 gap-10 mt-10 px-16'>
                 {
                     services.map(service => <HomeCard key={service._id} service={service}></HomeCard>)
                 }
             </div>
-            <div className='mt-10'>
-                <Button>See All</Button>
+            <div className='py-5'>
+               <a href="/services">
+               <Button>See All</Button>
+               </a>
             </div>
         </div>
     );
